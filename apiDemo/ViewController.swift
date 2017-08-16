@@ -10,6 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var cityTextField: UITextField!
+    
+    @IBAction func submit(_ sender: Any) {
+    }
+    
+    @IBOutlet var resultLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -35,7 +42,11 @@ class ViewController: UIViewController {
                         
                         if let description = ((jsonResult["weather"] as? NSArray)?[0] as? NSDictionary)?["description"] as? String {
                         
-                        print(description)
+                            DispatchQueue.main.sync(execute: {
+                            
+                                    self.resultLabel.text = description
+                            
+                            })
                         
                         }
                         
